@@ -23,27 +23,14 @@ const pacientes = [
     { id: 6, pacienteId: 2, ambulanciaId: 1, medico: 'Dr. Pérez',   distanciaKm: 5.6, fecha: '2026-06-06', estado: 'completado' },
   ];
 
+const existe = ambulancias.some(ambulancia => ambulancia.estado === 'mantenimiento');
 
-const suma = traslados.reduce((acumulador, item) => acumulador + item.distanciaKm, 0);
+console.log(existe);
 
-console.log(suma);
+const disp = ambulancias.every(ambulancia => ambulancia.estado === 'disponible' && ambulancia.kmRecorridos < 20000);
 
-const promedio = suma / traslados.length;
+console.log(disp);
 
-console.log(promedio);
+const fueNoFue = traslados.some(traslado => traslado.medico === 'Dra. Torres');
 
-const sumaAmbu = ambulancias.reduce((ac, it) => ac + it.kmRecorridos, 0);
-
-console.log(sumaAmbu);
-
-const sumaMed = traslados.reduce((ac, item) => {
-  if(ac[item.medico]){
-    ac[item.medico] = ac[item.medico] + 1;
-  }
-  else{
-    ac[item.medico] = 1;
-  }
-  return ac;
-}, {});
-
-console.log(sumaMed);
+console.log(fueNoFue);
